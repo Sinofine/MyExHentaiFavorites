@@ -1,0 +1,27 @@
+{
+  "name": "myexhentaifavorites",
+  "version": "1.0.0",
+  "description": "my exhentai favorites don't you like it?",
+  "main": "uploader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sinofine/MyExHentaiFavorites.git"
+  },
+  "keywords": [
+    "exhentai"
+  ],
+  "author": "Sinofine",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/Sinofine/MyExHentaiFavorites/issues"
+  },
+  "homepage": "https://github.com/Sinofine/MyExHentaiFavorites#readme",
+  "dependencies": {
+    "eh-parser": "git+https://github.com/Chocolatl/eh-parser.git",
+    "jsdom": "^15.1.1",
+    "node-fetch": "^2.6.0"
+  }
+}
