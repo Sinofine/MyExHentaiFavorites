@@ -10,5 +10,5 @@ let data = [];
     if(res.next) 
         getData(res.next)
     else
-        require("fs").writeFileSync("./data.json",JSON.stringify(data));
+        require("fs").writeFileSync("./dataFromFavorites.json",JSON.stringify(data));
 })("https://exhentai.org/favorites.php");
