@@ -3,10 +3,10 @@ node_js:
   - 10
 before_install:
   - npm i
-install:
+script:
   - node ./dataFetcherFromFavorites.js
   - node ./dataFetcherFromAPI.js
-after_install:
+after_script:
   - git init
   - git config user.name "EXHENTAI"
   - git config user.email "pornhub@rbq.show"
