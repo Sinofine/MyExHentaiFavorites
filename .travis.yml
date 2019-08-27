@@ -4,7 +4,7 @@ node_js:
 before_install:
   - npm i
 install:
-  - node ./dataFetcherFromFavorite.js
+  - node ./dataFetcherFromFavorites.js
   - node ./dataFetcherFromAPI.js
 after_install:
   - git init
