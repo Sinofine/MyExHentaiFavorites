@@ -7,8 +7,10 @@ script:
   - node ./dataFetcherFromFavorites.js
   - node ./dataFetcherFromAPI.js
 after_script:
-  - rm -rf .git
-  - git init
+  - git clone "https://${GH_TOKEN}@${GH_REF}"
+  - cd ${GH_REF}
+  - rm -f dataFromAPI.json
+  - mv ../dataFromAPI.json .
   - git config user.name "EXHENTAI"
   - git config user.email "pornhub@rbq.show"
   - git add dataFromAPI.json
