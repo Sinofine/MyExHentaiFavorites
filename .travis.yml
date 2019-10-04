@@ -9,11 +9,11 @@ script:
 after_script:
   - git clone "https://${GH_TOKEN}@${GH_REF}"
   - rm -rf .git
-  - cd ${GH_REF}
+  - cd "${GH_REF}"
   - rm -f dataFromAPI.json
   - mv ../dataFromAPI.json .
   - git config user.name "EXHENTAI"
   - git config user.email "pornhub@rbq.show"
   - git add dataFromAPI.json
-  - git commit -m "chore:\ update source"
+  - git commit -m "chore: update source"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
