@@ -8,6 +8,7 @@ script:
   - node ./dataFetcherFromAPI.js
 after_script:
   - git clone "https://${GH_TOKEN}@${GH_REF}"
+  - rm -rf .git
   - cd ${GH_REF}
   - rm -f dataFromAPI.json
   - mv ../dataFromAPI.json .
