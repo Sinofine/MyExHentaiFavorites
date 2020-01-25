@@ -2,7 +2,7 @@ const JSDOM = require("jsdom").JSDOM;
 const EHParser = require("eh-parser");
 const fetch = require("node-fetch");
 let data = [];
-
+console.log(require("process").env["EX_COOKIE"]);
 (async function getData(url){
     let content = await (fetch(url,{method:"GET",headers:{"Cookie":require("process").env["EX_COOKIE"]}}).then(data=>data.text()));
     let res = EHParser.parseSearchPage((new JSDOM(content)).window.document);
