@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyEhFavs</title>
+    <script type="module" src="w.js"></script>
+    <style>
+        @media screen and (max-width:480px) {
+            article {
+                flex-direction: column;
+            }
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+        }
+
+        section#listField {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        article {
+            display: flex;
+        }
+
+        section.tags-group::before {
+            content: attr(data-tagfield);
+            margin: 0 1em;
+            width: 3em;
+            display: inline-block;
+            font-variant: all-petite-caps;
+        }
+
+        .tags-group>* {
+            margin: 0.01em 0.1em;
+            padding: 0.01em 0.1em;
+            font-variant: all-small-caps;
+            display: inline-block;
+        }
+
+        .title {
+            font-family: serif;
+            background: lightgrey;
+            padding: 0.1em 0.5em;
+        }
+
+        .publish-date {
+            font-family: monospace;
+            background: #eaeaea;
+            padding: 0 0.5em;
+        }
+
+        section.tags {
+            background: #f3f3f3;
+            flex: 1;
+            padding: 0 0.5em;
+        }
+
+        .image-box {
+            position: relative;
+            display: flex;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tags {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        section.info {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        button.ax-reveal-button {
+            border: none;
+            background: transparent;
+            padding: 0.5em;
+            /* margin: 0.25em; */
+        }
+
+        section.actions {
+            padding: 0.1em;
+            background: #f8f8f8;
+        }
+
+        article {
+            width: 80vw;
+            margin: 0.5em 0;
+            box-shadow: 0 .2em 1em -1em #000;
+        }
+
+        .thumb {
+            position: relative;
+        }
+
+        .mask {
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            backdrop-filter: blur(2em);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5em 0;
+        }
+
+        input#searchBox {
+            width: 80vw;
+            outline: none;
+            border: none;
+            box-shadow: 0 0.5em 0.5em -0.7em #000;
+            padding: 0.5em;
+            transition: all 0.2s;
+            font-size: large;
+            font-family: monospace;
+        }
+
+        input#searchBox:hover {
+            box-shadow: 0 0.5em 0.5em -0.6em #000;
+        }
+
+        input#searchBox:focus {
+            box-shadow: 0 0.5em 0.5em -0.6em #5480a3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input type="text" id="searchBox" placeholder="Commit your queries (Supports Regex)">
+    </header>
+    <main>
+        <section id="listField">
+        </section>
+    </main>
+</body>
+
+</html>
