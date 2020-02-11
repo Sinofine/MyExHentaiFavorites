@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Sinofine/MyExHentaiFavorites#readme",
   "dependencies": {
-    "eh-parser": "git+https://github.com/Chocolatl/eh-parser.git",
+    "eh-parser": "git+https://github.com/Chocolatl/eh-parser.git#a1dccb6749",
     "jsdom": "^15.1.1",
     "node-fetch": "^2.6.0"
   }
