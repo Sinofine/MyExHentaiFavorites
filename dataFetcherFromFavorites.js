@@ -1,5 +1,5 @@
 const JSDOM = require("jsdom").JSDOM;
-const EHParser = require("eh-parser");
+const EHParser = require("./eh-parser");
 const fetch = require("node-fetch");
 let data = [];
 (async function getData(url){
