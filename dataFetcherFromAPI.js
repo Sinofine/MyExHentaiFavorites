@@ -11,5 +11,5 @@ let newData = [];
         }),
         "namespace": 1
       })}).then(p=>p.json()).then(p=>p["gmetadata"]).then(p=>p.map(val=>({...val,url:`https://exhentai.org/g/${val.gid}/${val.token}/`}))))];
-      it<=rawData.length ? getData() : require("fs").writeFileSync("./public/dataFromAPI.json",JSON.stringify(newData));
+      it<=rawData.length ?  (await new Promise(resolve => setTimeout(resolve, 5000)),getData()) : require("fs").writeFileSync("./public/dataFromAPI.json",JSON.stringify(newData));
 })();
