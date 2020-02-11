@@ -5,7 +5,7 @@ let newData = [];
 (async function getData(){
     newData = [...newData,...await (fetch("https://api.e-hentai.org/api.php",{method:"POST",body:JSON.stringify({
         "method": "gdata",
-        "gidlist": rawData.slice(it,it+=20).map((val)=>{
+        "gidlist": rawData.slice(it,it+=10).map((val)=>{
             let res = val.url.match(/https:\/\/exhentai.org\/g\/(.*)\/(.*)\//);
             return [parseInt(res[1]),res[2]]
         }),
