@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const JSDOM = require("jsdom").JSDOM;
 const EHParser = require("./eh-parser");
 const fetch = require("node-fetch");
