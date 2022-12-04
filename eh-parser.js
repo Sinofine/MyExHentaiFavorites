@@ -25,14 +25,14 @@ class EHParser {
     const getRating = Helper.getRatingByRatingElement
 
     const getPageNum = href => {
-      const r = /(?:\?|&)?page=(\d+)/.exec(href);
+      const r = /(?:\?|&)?next=(.+)/.exec(href);
       return r ? +r[1] : 0;   // 搜索结果第一页可能没有page参数，r为null
     };
 
     function getDisplayMode() {
       try {
         const modes = ['Minimal', 'Minimal+', 'Compact', 'Extended', 'Thumbnail'];
-        const mode = document.querySelector('#dms [selected]').textContent;
+        const mode = document.querySelectorAll('[selected]')[1].textContent;
         if(modes.indexOf(mode) == -1) throw new Error('Unknown display mode');
         return mode;
       } catch (err) {
@@ -42,7 +42,7 @@ class EHParser {
 
     // 页码从0开始
     function getCurPage() {
-      const link = document.querySelector('.ptt .ptds > a');
+      const link = document.querySelector('#unext');
       const page = link ? getPageNum(link.href) : -1;
 
       if (page === -1) throw new Error('Can not get current page number');
@@ -51,21 +51,15 @@ class EHParser {
 
     // 页码从0开始
     function getMaxPage() {
-      const links = document.querySelectorAll('.ptt a');
-      const len = links.length;
-      const isLast = !document.querySelector('.ptt td:last-child > a');   // 根据下一页的td中有没有a元素判断
-  
-      if (len === 0) throw new Error('Can not get maximum page number');
-      if (isLast) return getPageNum(links[len - 1].href);
-      else return getPageNum(links[len - 2].href);
+      return /(?:\?|&)?prev=(.+)/.exec(document.querySelector("#ulast").href)
     }
 
     function getPrevNextLink() {
-      const prevEl = document.querySelector('.ptt td:first-child > a');
-      const nextEl = document.querySelector('.ptt td:last-child > a');
+      const prevEl = document.querySelector('#uprev');
+      const nextEl = document.querySelector('#unext');
       return {
-        prev: prevEl ? prevEl.href : null,
-        next: nextEl ? nextEl.href : null
+        prev: prevEl.href ? prevEl.href : null,
+        next: nextEl.href ? nextEl.href : null
       };
     }
 
