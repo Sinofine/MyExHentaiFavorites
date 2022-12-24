@@ -8,15 +8,23 @@
     <title>MyEhFavs</title>
     <script type="module" src="w.js"></script>
     <style>
-        @media screen and (max-width:480px) {
-            article {
-                flex-direction: column;
-            }
-        }
+
+[category=doujinshi] { border-color : #f44336}
+        [category=manga] { border-color : #ff9800}
+        [category=artist-cg] { border-color : #fbc02d}
+        [category=game-cg] { border-color : #4caf50}
+        [category=western] { border-color : #8bc34a}
+        [category=non-h] { border-color : #2196f3}
+        [category=image-set] { border-color : #3f51b5}
+        [category=cosplay] { border-color : #9c27b0}
+        [category=asian-porn] { border-color : #9575cd}
+        [category=misc] { border-color : #f06292}
 
         body {
             display: flex;
             flex-direction: column;
+            font-family: Sitka,Georgia, "Noto Serif CJK SC", "Source Han Serif SC", serif;
+            font-size: 1.2em;
         }
 
         main {
@@ -32,37 +40,42 @@
 
         article {
             display: flex;
+            border-left: .5em solid;
+            width: 80vw;
+            margin: 0.5em 0;
+            box-shadow: 0 .2em 1em -1em #000;
         }
 
         section.tags-group::before {
             content: attr(data-tagfield);
+            font-family:Georgia, "Noto Serif CJK SC", "Source Han Serif SC", serif;
             margin: 0 1em;
-            width: 3em;
+            width: 5em;
             display: inline-block;
-            font-variant: all-petite-caps;
         }
 
+        .tags-group {
+            margin: 0.15em;
+        }
         .tags-group>* {
-            margin: 0.01em 0.1em;
-            padding: 0.01em 0.1em;
-            font-variant: all-small-caps;
+            margin: 0.1em 0.3em;
+            padding: 0.1em 0.2em;
             display: inline-block;
+            border-bottom: 2px black solid;
+            cursor: pointer;
         }
 
         .title {
-            font-family: serif;
-            background: lightgrey;
             padding: 0.1em 0.5em;
+            font-optical-sizing: auto;
+            font-size: 1.4em;
         }
 
         .publish-date {
-            font-family: monospace;
-            background: #eaeaea;
-            padding: 0 0.5em;
+            padding: 0 2em;
         }
 
         section.tags {
-            background: #f3f3f3;
             flex: 1;
             padding: 0 0.5em;
         }
@@ -89,22 +102,8 @@
             flex: 1;
         }
 
-        button.ax-reveal-button {
-            border: none;
-            background: transparent;
-            padding: 0.5em;
-            /* margin: 0.25em; */
-        }
-
         section.actions {
-            padding: 0.1em;
-            background: #f8f8f8;
-        }
-
-        article {
-            width: 80vw;
-            margin: 0.5em 0;
-            box-shadow: 0 .2em 1em -1em #000;
+            padding: 0.5em;
         }
 
         .thumb {
@@ -144,6 +143,21 @@
 
         input#searchBox:focus {
             box-shadow: 0 0.5em 0.5em -0.6em #5480a3;
+        }
+        button {
+            background: white;
+            border: 2px black solid;
+            font-family: inherit;
+            font-size: inherit;
+            margin: .2em;
+            padding: .25em .5em;
+        }
+        @media screen and (max-width:600px) {
+            article {
+                flex-direction: column-reverse;
+                border-left: inherit;
+                border-top: .5em solid;
+            }
         }
     </style>
 </head>

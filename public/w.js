@@ -7,15 +7,11 @@ const Data = "./dataFromAPI.json";
     let data = await (fetch(Data).then(w => w.json()));
     let dataWithEl = data.map(v => {
         let p = attacher(v);
-        p.el.innerHTML = `<!--<ax-reveal-provider>--><article>
-        <div class="image-box" style="background-image:url(${v.thumb})">
-            <div class="mask"></div>
-            <img class="thumb" src="${v.thumb}">
-        </div>
+        p.el.innerHTML = `<article category="${v.category.toLowerCase().replace(" ","-")}">
         <section class="info">
             <div class="title">${v.title}</div>
             <div class="publish-date">${(new Date(v.posted*1000)).toLocaleString()}</div>
-            <!--<ax-reveal-bound>--><section class="tags">
+            <section class="tags">
                 ${(() => {
                 let res = "";
                 let tagList = {};
@@ -27,7 +23,7 @@ const Data = "./dataFromAPI.json";
                 }
                 for (let p in tagList) {
                     let str = `<section class="tags-group" data-tagfield="${p}">`;
-                    for (let q of tagList[p]) str += `<!--<ax-reveal>--><div class="tag" data-tag="${q}">${q}</div><!--</ax-reveal>-->`;
+                    for (let q of tagList[p]) str += `<div class="tag" data-tag="${q}">${q}</div>`;
                     str += `</section>`;
                     res += str;
                 };
@@ -35,11 +31,15 @@ const Data = "./dataFromAPI.json";
             })()}
             </section>
             <section class="actions">
-                <!--<ax-reveal>--><button class="open-exhentai">EXHentai</button><!--</ax-reveal>-->
-                <!--<ax-reveal>--><button class="google-it">Google it!</button><!--</ax-reveal>-->
-            </section><!--</ax-reveal-bound>-->
+                <button class="open-exhentai">EXHentai</button>
+                <button class="google-it">Google it!</button>
+            </section>
         </section>
-    </article><!--</ax-reveal-provider>-->`;
+        <div class="image-box" style="background-image:url(${v.thumb})">
+            <div class="mask"></div>
+            <img class="thumb" src="${v.thumb}">
+        </div>
+    </article>`;
         p.el.querySelector(".open-exhentai").addEventListener("click",()=>window.open(p.node.url));
         p.el.querySelector(".google-it").addEventListener("click",()=>window.open("https://www.google.com/search?q="+encodeURI(p.node.title_jpn)));
         for(let el of p.el.querySelectorAll(".tag")) el.addEventListener("click", (e)=>(document.querySelector("#searchBox").value = (e.target.dataset["tag"]),document.querySelector("#searchBox").dispatchEvent(new InputEvent("input"))));
@@ -47,12 +47,12 @@ const Data = "./dataFromAPI.json";
     });
     const list = new List({dataWithEl, binding:document.getElementById("listField"),listBar:(()=>{
         let bar = document.createElement("div");
-        bar.innerHTML = `<!--<ax-reveal-provider>--><!--<ax-reveal-bound>--><button class="previous">Previous</button><button class="next">Next</button><!--</ax-reveal-bound>--><!--</ax-reveal-provider>-->`;
+        bar.innerHTML = `<button class="previous">Previous</button><button class="next">Next</button>`;
         bar.querySelector(".previous").addEventListener("click",()=>list.previous());
         bar.querySelector(".next").addEventListener("click",()=>list.next());
         return bar;
     })()});
-    list.render();!
+    list.render();
     document.querySelector('#searchBox').addEventListener("input",(e)=>list.commit(e.target.value));
 })();
 
